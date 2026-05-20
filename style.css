@@ -458,6 +458,7 @@
 .form-notification {
   display: none;
   position: fixed;
+  z-index: 9999;
   top: 15%;
   left: 80%;
   padding: 15px 25px;
