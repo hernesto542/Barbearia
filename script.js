@@ -68,7 +68,8 @@ async function getFullyBookedDates() {
     locale: "pt",
     minDate: "today",
     dateFormat: "d/m/Y",
-    disable: disabledDates
+    disable: disabledDates,
+    disableMobile: true
   });
 })();
 
