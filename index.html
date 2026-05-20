@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/favicon.webp" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Barbearia</title>
+  </head>
+  <body>
+    <div class="zap">
+      <a href="https://wa.me/5511999999999?text=Olá,%20Gostaria%20de%20Agendar%20Um%20Horário%20ou%20Tirar%20Alguma%20Duvida?." target="_blank"><img src="assets/zap.png" alt=""></a>
+    </div>
+    <header class="hero">
+      <nav class="navbar" id="navbar">
+        <img src="assets/Logo.png" alt="Logo" loading="lazy">
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#about">Sobre mim</a></li>
+          <li><a href="#gallery">Galeria</a></li>
+          <li><a href="#service">Serviços</a></li>
+          <li><a href="#time">Agendar horário</a></li>
+          <li><a class="btn" href="#location">Localização</a></li>
+        </ul>
+      </nav>
+      <header id="nav-bar">
+        <img src="assets/Logo.png" alt="">
+        <div id="nav-button" onclick="openMenu()"></div>
+      </header>
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="#" onclick="openMenu()">Inicio</a></li>
+          <li><a href="#about" onclick="openMenu()">Sobre mim</a></li>
+          <li><a href="#gallery" onclick="openMenu()">Galeria</a></li>
+          <li><a href="#service" onclick="openMenu()">Serviços</a></li>
+          <li><a href="#time" onclick="openMenu()">Agendar horário</a></li>
+          <li><a href="#location" onclick="openMenu()">Localização</a></li>
+        </ul>
+      </nav>
+      <div class="form-notification" id="form-notification"></div>
+      <section class="hero-content" id="hero-content">
+        <h1>Salve, meu nome é <span>Hernesto</span></h1>
+        <h2>Sou <span class="auto-input"></span></h2>
+        <p>
+          Transformando estilo em identidade. <br>
+          Atendimento personalizado, ambiente confortável e cortes feitos nos mínimos detalhes.
+        </p>
+        <p>Horário de funcionamento: <span>Seg a Sex, 08:00 as 18:00</span></p>    
+      </section>
+    </header>
+    <aside class="arrow" id="arrow">
+      <span>
+        <img src="assets/arrow-white.svg" alt="seta" loading="lazy">
+      </span>
+    </aside>
+    <section class="about" id="about">
+      <div class="container-about" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+        <img src="assets/thumbnail.png" alt="Foto do usuário" loading="lazy" data-aos="zoom-in">
+        <article class="about-content">
+          <h1>Sobre mim</h1>
+          <h2>Barbeiro <span>Profissional</span></h2>
+          <p>
+            Especializado em cortes modernos e acabamento de alta qualidade, trabalho focado em oferecer uma experiência completa para clientes que valorizam estilo, cuidado e personalidade.
+            Cada atendimento é único, sempre com atenção aos mínimos detalhes.
+          </p>
+          <aside class="about-social">
+            <a href="https://www.instagram.com/" target="_blank">
+              <img class="icons" src="assets/instagram.png" alt="Logo instagram" loading="lazy">
+            </a>
+            <a href="https://x.com/home" target="_blank">
+              <img class="icons" src="assets/twitter.png" alt="Logo linkedin" loading="lazy">
+            </a>
+            <a href="https://github.com/" target="_blank">
+              <img class="icons" src="assets/youtube.png" alt="Logo github" loading="lazy">
+            </a>
+            <a href="https://www.twitch.tv/" target="_blank">
+              <img class="icons" src="assets/twitch.png" alt="Logo twitch" loading="lazy">
+            </a>
+          </aside>
+        </article>
+      </div>
+    </section>
+    <section class="gallery" id="gallery">
+      <h2 data-aos="fade-right">Galeria</h2>
+      <article class="gallery-box">
+        <p data-aos="fade-up" data-aos-delay="100"><img src="assets/galeria (2).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in"></p>
+        <p data-aos="fade-up" data-aos-delay="200"><img src="assets/galeria (1).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in"></p>
+        <p data-aos="fade-up" data-aos-delay="300"><img src="assets/galeria (3).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in"></p>
+        <p data-aos="fade-up" data-aos-delay="400"><img src="assets/galeria (4).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in"></p>
+        <p data-aos="fade-up" data-aos-delay="500"><img src="assets/cortes (1).png" alt="Logo html" loading="lazy" data-aos="zoom-in"></p>
+        <p data-aos="fade-up" data-aos-delay="600"><img src="assets/cortes (2).png" alt="Logo html" loading="lazy" data-aos="zoom-in"></p>
+        <p data-aos="fade-up" data-aos-delay="700"><img src="assets/cortes (3).png" alt="Logo html" loading="lazy" data-aos="zoom-in"></p>
+        <p data-aos="fade-up" data-aos-delay="800"><img src="assets/cortes (4).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in"></p>
+      </article>
+    </section> 
+    <section class="service" id="service">
+      <h2 data-aos="fade-right">Meus Serviços</h2>
+      <article class="service-box" data-aos="fade-up">
+        <p data-aos="fade-up" data-aos-delay="100">
+          <img src="assets/cortes (1).png" alt="Logo html" loading="lazy" data-aos="zoom-in">
+          <strong>Degradê na Régua (Disfarçado)</strong> 
+          <small>Aquele disfarce limpo na zero ou na gilete, sem marcação e com o acabamento todo pontilhado.</small>
+          <span>R$ 35,00</span>
+        </p>
+        <p data-aos="fade-up" data-aos-delay="200">
+          <img src="assets/cortes (2).png" alt="Logo html" loading="lazy" data-aos="zoom-in">
+          <strong>Corte + Risquinho (Navalhado)</strong> 
+          <small>mandar aquele detalhe que faz a diferença. Pode ser o risquinho simples, duplo ou um desenho geométrico pra dar um destaque no visual.</small>
+          <span>R$ 30,00</span>
+        </p>
+        <p data-aos="fade-up" data-aos-delay="300">
+          <img src="assets/cortes (3).png" alt="Logo html" loading="lazy" data-aos="zoom-in">
+          <strong>Nevou (Platinado)</strong> 
+          <small>Descoloração total dos fios até atingir o branco absoluto. Serviço de paciência que exige cuidado para não agredir o couro cabeludo.</small>
+          <span>R$ 120,00</span>
+        </p>
+        <p data-aos="fade-up" data-aos-delay="400">
+          <img src="assets/cortes (4).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in">
+          <strong>Barba Posturada</strong> 
+          <small>Desenho feito na navalha, linha da bochecha e pescoço bem alinhados. Finalizado com loção pra não irritar e deixar o rosto no esquema.</small>
+          <span>R$ 20,00</span>
+        </p>
+        <p data-aos="fade-up" data-aos-delay="500">
+          <img src="assets/galeria (1).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in">
+          <strong>Reflexo Alinhado</strong> 
+          <small>Luzes na touca pra dar aquele contraste no topo, deixando o corte com muito mais brilho e presença.</small>
+          <span>R$ 50,00</span>
+        </p>
+        <p data-aos="fade-up" data-aos-delay="600">
+          <img src="assets/galeria (2).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in">
+          <strong>Combo: Mandrake Completo</strong> 
+          <small>Cabelo na régua + Barba alinhada + Sobrancelha. O pacote pra sair da barbearia pronto pra qualquer rolê.</small>
+          <span>R$ 100,00</span>
+        </p>
+        <p data-aos="fade-up" data-aos-delay="700">
+          <img src="assets/galeria (3).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in">
+          <strong>Pigmentação de Elite</strong> 
+          <small>Técnica de preenchimento para esconder falhas e deixar o degradê ou a barba com aquela definição pesada que destaca de longe.</small>
+          <span>R$ 20,00</span>
+        </p>
+        <p data-aos="fade-up" data-aos-delay="800">
+          <img src="assets/galeria (4).jpg" alt="Logo html" loading="lazy" data-aos="zoom-in">
+          <strong>Lavagem e Hidratação</strong> 
+          <small>Lavagem para tirar os pelos após o corte e aplicação de uma máscara rápida para dar brilho, especialmente após processos químicos</small>
+          <span>R$ 15,00</span>
+        </p>
+      </article>
+    </section>
+    <section class="time" id="time">
+      <h2 data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">Agendamento</h2>
+      <div class="container-contact" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+        <span>
+          <img src="assets/tacha.png" alt="pino de desenho" loading="lazy">
+          <strong>Confirme seu horário</strong><br>
+          Escolha o serviço, depois data e horário desejado.
+        </span>
+        <form class="contact-form" id="booking-form">
+          <p><i class="fa-regular fa-user"></i><input type="text" id="client-name" placeholder="Seu Nome" maxlength="50"></p>
+          <p><i class="fa-solid fa-phone"></i><input type="tel" id="client-phone" placeholder="Seu Celular" maxlength="15"></p>
+          <p><i class="fa-regular fa-calendar"></i><input type="text" id="date" placeholder="Selecione uma data"></p>
+          <p class="hours-container">
+            <i class="fa-regular fa-clock"></i>
+            <select id="hour-select" disabled>
+              <option value="">Escolha um horário</option>
+              <option value="08:00">08:00</option>
+              <option value="09:00">09:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="15:00">15:00</option>
+              <option value="16:00">16:00</option>
+              <option value="17:00">17:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+          </p>
+          <p><i class="fa-solid fa-scissors"></i><small>Escolha o serviço:</small></p>
+          <div class="services-checkbox" id="services-checkbox">
+            <label><input type="checkbox" value="Degradê na Régua" name="service">Degradê na Régua</label>
+            <label><input type="checkbox" value="Corte + Risquinho" name="service">Corte + Risquinho</label>
+            <label><input type="checkbox" value="Nevou" name="service">Nevou</label>
+            <label><input type="checkbox" value="Barba Posturada" name="service">Barba Posturada</label>
+            <label><input type="checkbox" value="Reflexo Alinhado" name="service">Reflexo Alinhado</label>
+            <label><input type="checkbox" value="Combo Mandrake" name="service">Combo Mandrake</label>
+            <label><input type="checkbox" value="Pigmentação de Elite" name="service">Pigmentação de Elite</label>
+            <label><input type="checkbox" value="Lavagem e Hidratação" name="service">Lavagem e Hidratação</label>
+          </div>
+          <p><button type="submit"><i class="fa-solid fa-business-time"></i>AGENDAR HORÁRIO</button></p>
+        </form>
+      </div>
+    </section>
+    <section class="location" id="location">
+      <h2 data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">Localização</h2>
+      <article class="location-box" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.527470683181!2d-46.53183262467136!3d-23.513523678832758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5fccee43705f%3A0x79fb38f98146bb0!2sPosto%20Tiquatira!5e0!3m2!1spt-BR!2sbr!4v1778807977518!5m2!1spt-BR!2sbr"
+          width="900"
+          height="382"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
+        <div class="location-info">
+          <article>
+            <h3>Barbearia do Hernesto</h3>
+            <p>R. Dr. Virgílio Machado, 271 - Vila Pierina, São Paulo - SP, 03733-180</p>
+          </article>
+          <a href="https://www.google.com/maps/place/Posto+Tiquatira/@-23.5136099,-46.5288963,3a,75y,283.95h,90t/data=!3m8!1e1!3m5!1s-mM8NfZXTWY_Cp4GuDzZew!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-mM8NfZXTWY_Cp4GuDzZew%26yaw%3D283.94965!7i16384!8i8192!5s0x94ce5e330e484c69:0x186c35a7d87b1d7a!4m14!1m7!3m6!1s0x94ce5fccee43705f:0x79fb38f98146bb0!2sPosto+Tiquatira!8m2!3d-23.5135237!4d-46.5292577!16s%2Fg%2F1vvr7b7h!3m5!1s0x94ce5fccee43705f:0x79fb38f98146bb0!8m2!3d-23.5135237!4d-46.5292577!16s%2Fg%2F1vvr7b7h?entry=ttu&g_ep=EgoyMDI2MDUxMi4wIKXMDSoASAFQAw%3D%3D" 
+            target="_blank">ABRIR NO MAPS
+          </a>
+        </div>        
+      </article>
+    </section>   
+    <footer>
+      <h2>© 2026 Barbearia do Hernesto - Todos os direitos reservados.</h2>
+      <p>Desenvolvido por <span>JuniorLima36</span></p>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: false,
+        offset: 80
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

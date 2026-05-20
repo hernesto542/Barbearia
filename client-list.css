@@ -1,0 +1,287 @@
+:root {
+  --bg-black: #101010;
+  --bg-blackgrey: #191919;
+  --bg-blue: #0D121E;
+  --bg-white: #F9F9F9;
+  --bg-red: #E02020;
+  --hover-red: #E02020;
+  --sub-text: #495057;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  color: var(--bg-white);
+  background-color: var(--bg-black);
+}
+
+.modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 500px;
+  padding: 50px;
+  border-radius: 15px;
+  background: var(--bg-black);
+}
+
+.modal-content h2 {
+  color: var(--bg-white);
+}
+
+.modal-content input, select {
+  padding: 12px;
+  outline: none;
+  color: white;
+  background: #101010;
+  border: 1px solid var(--bg-red);
+}
+
+.edit-service {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.edit-service label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  font-size: small;
+  font-weight: 400;
+  color: var(--bg-white);
+  cursor: pointer;
+  transition: .3s;
+  background: var(--bg-black);
+  border: 1px solid var(--bg-red);
+}
+
+.edit-service input[type="checkbox"] {
+  accent-color: #E02020;
+  width: 13px;
+  height: 13px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  padding: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 14px 24px;
+  border-radius: 10px;
+  color: var(--bg-white);
+  background-color: var(--bg-red);
+  transition: transform .4s;
+  border: 2px solid transparent;
+}
+
+.modal-buttons button:hover {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--bg-red);
+  transition: .4s;
+  border: 2px solid var(--hover-red);
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  color: var(--bg-red);
+  background-color: var(--bg-blue);
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+#guests-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 20px;
+}
+
+.guest-item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 15px;
+  background-color: var(--bg-blue);
+  margin-bottom: 15px;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.1em;
+  width: 250px;
+}
+
+.client-info p,
+.services-wrapper {
+  margin-bottom: 18px;
+  color: white;
+  font-size: 1rem;
+}
+
+.client-info strong,
+.services-wrapper strong {
+  color: #ff1e1e;
+  margin-right: 5px;
+}
+
+.client-info i,
+.services-wrapper i {
+  color: #ff1e1e;
+  margin-right: 8px;
+}
+
+.services-tags {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.services-tags span {
+  background: #0c1630;
+  border: 1px solid #24365f;
+  padding: 5px 15px;
+  border-radius: 15px;
+  color: white;
+  font-size: 15px;
+  width: 200px;
+}
+
+.client-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.client-buttons button {
+  border: none;
+  padding: 10px 13px;
+  border-radius: 25px;
+  background: #ff1e1e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.client-buttons i {
+  margin-right: 6px;
+}
+
+.error-message {
+  color: red;
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 1200px) {
+  #guests-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  #guests-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  #guests-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  header h1 {
+    font-size: 26px;
+  }
+
+  #guests-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .modal-content {
+    width: 425px;
+  }
+
+  .edit-service label {
+    padding: 5px 20px;
+  }
+
+  .modal-buttons button {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 475px) {
+  #guests-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .modal-content {
+    width: 375px;
+  }
+
+  .edit-service label {
+    padding: 5px 10px;
+  }
+
+  .modal-buttons button {
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 375px) {
+  header h1 {
+    font-size: 24px;
+  }
+
+  #guests-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .modal-content {
+    width: 325px;
+  }
+
+  .edit-service label {
+    padding: 5px;
+  }
+
+  .modal-buttons button {
+    padding: 10px;
+  }
+}

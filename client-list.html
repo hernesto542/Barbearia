@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/favicon.webp" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+  <link rel="stylesheet" href="client-list.css">
+  <title>Lista de Clientes</title>
+</head>
+<body>
+  <div class="modal" id="edit-modal">
+    <div class="modal-content">
+      <h2>Editar Agendamento</h2>
+      <input type="hidden" id="edit-id">
+      <input type="text" id="edit-name" placeholder="Nome">
+      <input type="text" id="edit-phone" placeholder="Telefone">
+      <input type="text" id="edit-date">
+
+      <select id="edit-hour">
+        <option value="08:00">08:00</option>
+        <option value="09:00">09:00</option>
+        <option value="10:00">10:00</option>
+        <option value="11:00">11:00</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+        <option value="16:00">16:00</option>
+        <option value="17:00">17:00</option>
+        <option value="18:00">18:00</option>
+      </select>
+
+      <p class="edit-service" id="edit-service">
+        <label><input type="checkbox" value="Degradê na Régua" name="service">Degradê na Régua</label>
+        <label><input type="checkbox" value="Corte + Risquinho" name="service">Corte + Risquinho</label>
+        <label><input type="checkbox" value="Nevou" name="service">Nevou</label>
+        <label><input type="checkbox" value="Barba Posturada" name="service">Barba Posturada</label>
+        <label><input type="checkbox" value="Reflexo Alinhado" name="service">Reflexo Alinhado</label>
+        <label><input type="checkbox" value="Combo Mandrake" name="service">Combo Mandrake</label>
+        <label><input type="checkbox" value="Pigmentação de Elite" name="service">Pigmentação de Elite</label>
+        <label><input type="checkbox" value="Lavagem e Hidratação" name="service">Lavagem e Hidratação</label>
+      </p>
+
+      <div class="modal-buttons">
+        <button onclick="updateAppointment()">
+          Salvar
+        </button>
+        <button onclick="closeModal()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+  <header>
+    <h1>Clientes Confirmados</h1>
+  </header>
+
+  <section id="guests-container">
+    <!-- Os clientes confirmados serão exibidos aqui -->
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    const API = "https://6a0799dcfa9b27c848fa2fb8.mockapi.io/agendamento/appointments";
+
+    async function loadAppointments() {
+      try {
+        const response = await fetch(API);
+        const data = await response.json();
+        const container = document.getElementById("guests-container");
+        container.innerHTML = "";
+
+        data.sort((a, b) => {
+          const [dayA, monthA, yearA] = a.date.split("/");
+          const [dayB, monthB, yearB] = b.date.split("/");
+
+          const dateA = new Date(`${yearA}-${monthA}-${dayA}T${a.hour}`);
+          const dateB = new Date(`${yearB}-${monthB}-${dayB}T${b.hour}`);
+
+          return dateA - dateB;
+        });
+
+        data.forEach((client) => {
+          const item = document.createElement("div");
+          item.classList.add( "guest-item");
+          item.innerHTML = `
+            <div class="client-info">
+              <p><i class="fa-regular fa-user"></i><strong>Nome:</strong>${client.name}</p>
+              <p><i class="fa-regular fa-clock"></i><strong>Horário:</strong>${client.hour}</p>
+              <p><i class="fa-regular fa-calendar"></i><strong>Data:</strong>${client.date}</p>
+              <p><i class="fa-solid fa-phone"></i><strong>Telefone:</strong>${client.phone}</p>
+              <div class="services-wrapper">
+                <strong><i class="fa-solid fa-scissors"></i>Serviços:</strong>
+                <div class="services-tags">
+                  ${
+                    Array.isArray(client.service)
+                      ? client.service.map(service =>
+                          `<span>${service}</span>`
+                        ).join("")
+                      : `<span>${client.service}</span>`
+                  }
+                </div>
+              </div>
+            </div>
+            <div class="client-buttons">
+              <button onclick='editAppointment(${JSON.stringify(client)})'>
+                <i class="fa-solid fa-pen"></i>
+                Editar
+              </button>
+
+              <button onclick="deleteAppointment('${client.id}')">
+                <i class="fa-solid fa-trash"></i>
+                Excluir
+              </button>
+            </div>
+          `;
+
+          container.appendChild(item);
+        });
+      } catch(error) {
+        console.error("Erro ao carregar clientes:", error);
+      }
+    }
+
+    async function deleteAppointment(id) {
+      try {
+        await fetch(`${API}/${id}`, {
+          method: "DELETE"
+        });
+        loadAppointments();
+
+      } catch(error) {
+        console.error(error);
+      }
+    }
+    function editAppointment(client) {
+      document.getElementById("edit-modal").style.display = "flex";
+      document.getElementById("edit-id").value = client.id;
+      document.getElementById("edit-name").value = client.name;
+      document.getElementById("edit-phone").value = client.phone;
+      document.getElementById("edit-hour").value = client.hour;
+      document.getElementById("edit-date").value = client.date;
+      document
+        .querySelectorAll('#edit-service input[name="service"]')
+        .forEach((checkbox) => {
+          checkbox.checked = false;
+        });
+      document
+        .querySelectorAll('#edit-service input[name="service"]')
+        .forEach((checkbox) => {
+          checkbox.checked =
+            client.service.includes(checkbox.value);
+        });
+
+      disableBookedHours(client.id);
+    }
+
+    function closeModal() {
+      document.getElementById("edit-modal").style.display = "none";
+    }
+
+    async function disableBookedHours(currentId) {
+      const selectedDate = document.getElementById("edit-date").value;
+
+      if (!selectedDate) return;
+
+      const response = await fetch(API);
+      const appointments = await response.json();
+
+      const select = document.getElementById("edit-hour");
+      const options = select.querySelectorAll("option");
+
+      options.forEach((option) => {
+        option.disabled = false;
+
+        if (option.value !== "") {
+          option.textContent = option.value;
+        }
+      });
+
+      const bookedHours =
+        appointments
+          .filter((appointment) => {
+            return (
+              appointment.date === selectedDate &&
+              appointment.id !== currentId
+            );
+          })
+          .map((appointment) => {
+            return appointment.hour;
+          });
+
+      options.forEach((option) => {
+        if (
+          bookedHours.includes(option.value)
+        ) {
+          option.disabled = true;
+          option.textContent =
+            `${option.value} (Indisponível)`;
+        }
+      });
+    }
+
+    async function updateAppointment() {
+      const id = document.getElementById("edit-id").value;
+      const name = document.getElementById("edit-name").value;
+      const phone = document.getElementById("edit-phone").value;
+      const date = document.getElementById("edit-date").value;
+      const hour = document.getElementById("edit-hour").value;
+
+      const service = Array.from(
+        document.querySelectorAll(
+          '#edit-service input[name="service"]:checked'
+        )
+      ).map((checkbox) => checkbox.value);
+
+      try {
+        await fetch(`${API}/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name,
+            phone,
+            date,
+            hour,
+            service
+          })
+        });
+
+        closeModal();
+        loadAppointments();
+
+      } catch(error) {
+        console.error(error);
+      }
+    }
+
+    loadAppointments();
+    setInterval(loadAppointments, 30000);
+    document.getElementById("edit-date").addEventListener("change", () => {
+      const currentId = document.getElementById("edit-id").value;
+      disableBookedHours(currentId);
+    });
+
+    flatpickr("#edit-date", {
+      locale: "pt",
+      minDate: "today",
+      dateFormat: "d/m/Y",
+    });
+  </script>
+</body>
+</html>
